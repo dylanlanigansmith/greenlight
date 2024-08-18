@@ -15,6 +15,7 @@
     margin-right: -8px;
     margin-top: -20px;
     color: #005e31; /* SVG Color (vol icon) */
+    cursor: 'pointer';
   }
 
   .slider {

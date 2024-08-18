@@ -35,7 +35,20 @@ const Slider: React.FC<SliderProps> = ({
   return (
     <div className='slider-container' style={style}>
       {svg ? (
-        <div className='slider-icon' onClick={handleSvgClick} style={{ marginRight: 10 }}>{svg}</div>
+        <div
+          className="slider-icon"
+          onClick={handleSvgClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleSvgClick();
+            }
+          }}
+          tabIndex={0} 
+          role="button" 
+          aria-label="Reset volume" 
+        >
+          {svg}
+        </div>
       ) : (
         label && <label htmlFor={id} style={{ marginRight: 10 }}>{label}:</label>
       )}

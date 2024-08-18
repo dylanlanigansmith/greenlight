@@ -35,12 +35,12 @@ function StreamComponent({
 
     //Client-side volume control 
     const [volume, setVolume] = React.useState(1.0); //without any controls, the volume has been maxed by default, let's follow this assumption and start at full for our slider
-    let audioElement = document.getElementsByTagName("audio")[0] as HTMLAudioElement
+    let audioElement = document.getElementsByTagName("audio")[0] 
     const handleVolumeChange = (newVolume : number) => {
 
          //not sure if it is possible for us to be running this script without an audio element present hence lazy error checking here
         if (audioElement == null) 
-            audioElement = document.getElementsByTagName("audio")[0] as HTMLAudioElement
+            audioElement = document.getElementsByTagName("audio")[0]
         
         if (audioElement) {
             setVolume(newVolume)
