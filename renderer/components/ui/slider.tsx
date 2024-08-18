@@ -38,11 +38,6 @@ const Slider: React.FC<SliderProps> = ({
         <div
           className="slider-icon"
           onClick={handleSvgClick}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              handleSvgClick();
-            }
-          }}
           tabIndex={0} 
           role="button" 
           aria-label="Reset volume" 
