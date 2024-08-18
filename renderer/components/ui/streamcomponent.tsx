@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './button'
+import Slider from './slider'; 
 import xPlayer from 'xbox-xcloud-player'
 import Loader from './loader'
 import Card from './card'
@@ -29,6 +30,31 @@ function StreamComponent({
 
     const [micStatus, setMicStatus] = React.useState(false)
     const [waitingSeconds, setWaitingSeconds] = React.useState(0) // eslint-disable-line @typescript-eslint/no-unused-vars
+
+
+
+    //Client-side volume control 
+    const [volume, setVolume] = React.useState(1.0); //without any controls, the volume has been maxed by default, let's follow this assumption and start at full for our slider
+    let audioElement = document.getElementsByTagName("audio")[0] as HTMLAudioElement
+    const handleVolumeChange = (newVolume : number) => {
+
+         //not sure if it is possible for us to be running this script without an audio element present hence lazy error checking here
+        if (audioElement == null) 
+            audioElement = document.getElementsByTagName("audio")[0] as HTMLAudioElement
+        
+        if (audioElement) {
+            setVolume(newVolume)
+            audioElement.volume = newVolume
+        }
+        else {
+            console.error("VolumeSlider: handleChange: failed to find current or lost previous audioelement")
+        }
+
+    }
+    const volumeIcon = ( //from https://www.svgrepo.com/svg/502904/volume-low and optimized w/ https://jakearchibald.github.io/svgomg/
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 14v-4a1 1 0 0 1 1-1h2.65a1 1 0 0 0 .624-.22l3.101-2.48A1 1 0 0 1 16 7.08v9.84a1 1 0 0 1-1.625.78l-3.101-2.48a1 1 0 0 0-.625-.22H8a1 1 0 0 1-1-1Z"/></svg>
+      );
+
 
     let jitterData = [new Float32Array([performance_now_seconds()]), new Float32Array([0.0])]
     let droppedData = [new Float32Array([performance_now_seconds()]), new Float32Array([0.0]), new Float32Array([0.0])]
@@ -372,6 +398,17 @@ function StreamComponent({
                                 e.target.blur(); toggleMic() 
                             }}></Button>
                         </div>
+                        
+                        <Slider
+                            id="volume-slider"
+                            min={0}
+                            max={1}
+                            step={0.01}
+                            value={volume}
+                            onChange={handleVolumeChange}
+                            label="Volume"
+                            svg={volumeIcon}
+                        />
 
                         <div style={{
                             marginRight: 20,

@@ -41,6 +41,7 @@ p {
  * UI Components
  */
 @import 'components/ui/button.css';
+@import 'components/ui/slider.css';
 @import 'components/ui/card.css';
 @import 'components/ui/label.css';
 @import 'components/ui/streamcomponent.css';
