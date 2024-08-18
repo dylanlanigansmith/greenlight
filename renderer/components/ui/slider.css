@@ -14,8 +14,13 @@
   .slider-icon {
     margin-right: -8px;
     margin-top: -20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
     color: #005e31; /* SVG Color (vol icon) */
-    cursor: 'pointer';
   }
 
   .slider {

@@ -35,7 +35,7 @@ const Slider: React.FC<SliderProps> = ({
   return (
     <div className='slider-container' style={style}>
       {svg ? (
-        <div
+        <button
           className="slider-icon"
           onClick={handleSvgClick}
           tabIndex={0} 
@@ -43,7 +43,7 @@ const Slider: React.FC<SliderProps> = ({
           aria-label="Reset volume" 
         >
           {svg}
-        </div>
+        </button>
       ) : (
         label && <label htmlFor={id} style={{ marginRight: 10 }}>{label}:</label>
       )}
