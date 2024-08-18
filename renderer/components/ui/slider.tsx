@@ -32,6 +32,10 @@ const Slider: React.FC<SliderProps> = ({
         if (value === min) onChange(max)
         else onChange(min)
     }
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        return false;
+    }
 
     return (
         <div className="slider-container" style={style}>
@@ -61,6 +65,7 @@ const Slider: React.FC<SliderProps> = ({
                 step={step}
                 value={value}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
             />
             <span className="slider-percentage" style={{ marginLeft: 10 }}>
                 {Math.round(value * 100)}%

@@ -39,7 +39,7 @@ function StreamComponent({
     const handleVolumeChange = (newVolume: number) => {
 
         //not sure if it is possible for us to be running this script without an audio element present hence lazy error checking here
-        if (audioElement === null)
+        if (audioElement == null)
             audioElement = document.getElementsByTagName('audio')[0]
 
         if (audioElement) {
