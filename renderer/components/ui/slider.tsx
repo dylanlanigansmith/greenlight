@@ -33,8 +33,8 @@ const Slider: React.FC<SliderProps> = ({
         else onChange(min)
     }
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        event.preventDefault();
-        return false;
+        event.preventDefault()
+        return false
     }
 
     return (
